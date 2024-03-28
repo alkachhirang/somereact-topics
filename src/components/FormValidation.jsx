@@ -3,20 +3,24 @@ const FormValidation = () => {
     const [formData, setFormData] = useState({
         name: "",
         lastname: "",
-        number: "",
+        phone: "",
         password: "",
         confirmPassword: "",
     });
     const [formErrors, setFormErrors] = useState({
         name: "",
         lastname: "",
-        number: "",
+        phone: "",
         password: "",
         confirmPassword: "",
     });
     const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const handleChange = (e) => {
         const { name, value } = e.target;
+        if (name === 'phone' && !/^\d*$/.test(value)) {
+            // If the input is not a digit, don't update the state
+            return;
+        }
         setFormData({
             ...formData,
             [name]: value,
@@ -27,7 +31,7 @@ const FormValidation = () => {
         const regex = {
             name: /^[a-zA-Z\s]+$/,
             lastname: /^[a-zA-Z\s]+$/,
-            number: /^\d{10}$/,
+            phone: /^\+?\d{10}$/,
             password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@])[a-zA-Z\d@]{8,}$/,
             confirmPassword:
                 /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@])[a-zA-Z\d@]{8,}$/,
@@ -39,8 +43,8 @@ const FormValidation = () => {
         if (!regex.lastname.test(formData.lastname)) {
             errors.lastname = "lastname is invalid.";
         }
-        if (!regex.number.test(formData.number)) {
-            errors.number = "Number is invalid.";
+        if (!regex.phone.test(formData.phone)) {
+            errors.phone = "Number is invalid.";
         }
         if (!regex.password.test(formData.password)) {
             errors.password = "Password is invalid.";
@@ -61,14 +65,14 @@ const FormValidation = () => {
         setFormData({
             name: "",
             lastname: "",
-            number: "",
+            phone: "",
             password: "",
             confirmPassword: "",
         });
         setFormErrors({
             name: "",
             lastname: "",
-            number: "",
+            phone: "",
             password: "",
             confirmPassword: "",
         });
@@ -139,17 +143,19 @@ const FormValidation = () => {
                         </div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="number">Number:</label>
+                        <label htmlFor="phone">Number:</label>
                         <input
-                            type="text"
-                            id="number"
-                            name="number"
-                            value={formData.number}
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            value={formData.phone}
                             onChange={handleChange}
-                            className={formErrors.number ? "error" : ""}
+                            className={`w-full p-[10px] rounded-[5px] border border-solid border-[#ccc] ${formErrors.phone ? "error" : ""}`}
+                            maxLength={10}
+                            pattern="[0-9]"
                         />
-                        {formErrors.number && (
-                            <p className="error-message">{formErrors.number}</p>
+                        {formErrors.phone && (
+                            <p className="error-message">{formErrors.phone}</p>
                         )}
                     </div>
                     <div className="flex justify-center items-center">
