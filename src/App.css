@@ -43,28 +43,37 @@ input[type="password"] {
 }
 
 .submit-button:hover {
-   background-color: indianred;
+    background-color: indianred;
 }
 
 .success-popup {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transform: translate(-50%, -50%); */
+    z-index: 999;
+    backdrop-filter: blur(12px);
+}
+
+.success-popup-box {
     background-color: #ffffff;
-    border: 1px solid #007bff;
+    border: 1px solid lightcoral;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 999;
 }
 
-.success-popup p {
+.success-popup-box p {
     margin-bottom: 10px;
 }
 
-.success-popup button {
-    background-color: #007bff;
+.success-popup-box button {
+    background-color: lightcoral;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -72,6 +81,6 @@ input[type="password"] {
     cursor: pointer;
 }
 
-.success-popup button:hover {
-    background-color: #0056b3;
+.success-popup-box button:hover {
+    background-color: indianred;
 }

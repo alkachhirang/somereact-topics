@@ -2,12 +2,14 @@ import { useState } from "react";
 const FormValidation = () => {
     const [formData, setFormData] = useState({
         name: "",
+        lastname: "",
         number: "",
         password: "",
         confirmPassword: "",
     });
     const [formErrors, setFormErrors] = useState({
         name: "",
+        lastname: "",
         number: "",
         password: "",
         confirmPassword: "",
@@ -24,6 +26,7 @@ const FormValidation = () => {
         e.preventDefault();
         const regex = {
             name: /^[a-zA-Z\s]+$/,
+            lastname: /^[a-zA-Z\s]+$/,
             number: /^\d{10}$/,
             password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@])[a-zA-Z\d@]{8,}$/,
             confirmPassword:
@@ -31,7 +34,10 @@ const FormValidation = () => {
         };
         const errors = {};
         if (!regex.name.test(formData.name)) {
-            errors.name = "Name is invalid.";
+            errors.name = "name is invalid.";
+        }
+        if (!regex.lastname.test(formData.lastname)) {
+            errors.lastname = "lastname is invalid.";
         }
         if (!regex.number.test(formData.number)) {
             errors.number = "Number is invalid.";
@@ -61,6 +67,7 @@ const FormValidation = () => {
         });
         setFormErrors({
             name: "",
+            lastname: "",
             number: "",
             password: "",
             confirmPassword: "",
@@ -68,7 +75,7 @@ const FormValidation = () => {
     };
     return (
         <>
-            <div className="container mx-auto px-3">
+            <div className="container mx-auto px-3 pb-5">
                 <h2 className="text-black text-center text-[35px] md:text-[48px] font-bold mb-5">Form-Validation</h2>
                 <form className="registration-form" onSubmit={handleSubmit}>
                     <div className="md:flex items-center justify-between">
@@ -94,10 +101,10 @@ const FormValidation = () => {
                                 name="lastname"
                                 value={formData.lastname}
                                 onChange={handleChange}
-                            // className={formErrors.name ? "error" : ""}
+                            // className={formErrors.lastname ? "error" : ""}
                             />
-                            {formErrors.name && (
-                                <p className="error-message">{formErrors.name}</p>
+                            {formErrors.lastname && (
+                                <p className="error-message">{formErrors.lastname}</p>
                             )}
                         </div>
                     </div>
@@ -153,8 +160,10 @@ const FormValidation = () => {
                 </form>
                 {showSuccessPopup && (
                     <div className="success-popup">
-                        <p>Form submitted successfully!</p>
-                        <button onClick={handlePopupClose}>Close</button>
+                        <div className="success-popup-box">
+                            <p>Form submitted successfully!</p>
+                            <button onClick={handlePopupClose}>Close</button>
+                        </div>
                     </div>
                 )}
             </div>
