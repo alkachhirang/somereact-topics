@@ -5,14 +5,12 @@ import "slick-carousel/slick/slick-theme.css";
 import SlickSlider from './components/SlickSlider';
 import SwiperSlider from './components/SwiperSlider';
 import FormValidation from './components/FormValidation';
-import Todo from './components/Todo';
 function App() {
   return (
     <div className="">
       <SwiperSlider />
       <SlickSlider />
       <FormValidation />
-      <Todo/>
     </div>
   );
 }
