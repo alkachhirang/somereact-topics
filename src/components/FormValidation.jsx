@@ -144,13 +144,14 @@ const FormValidation = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="number">Number:</label>
-                        <input
+                        <input 
                             type="text"
                             id="number"
                             name="number"
                             value={formData.number}
                             onChange={handleChange}
                             className={formErrors.number ? "error" : ""}
+                            maxLength={10}
                         />
                         {formErrors.number && (
                             <p className="error-message">{formErrors.number}</p>
