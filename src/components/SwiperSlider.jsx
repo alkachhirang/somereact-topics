@@ -11,7 +11,7 @@ import 'swiper/css';
 export default () => {
     return (
         <div className='container mx-auto px-3 items-center justify-center pt-[50px]'>
-            <h1 className='text-black font-bold text-center text-[35px] md:text-[48px] text-[48px] mb-[50px]'>Swiper-Slider</h1>
+            <h1 className='text-black font-bold text-center text-[35px] md:text-[48px] mb-[50px]'>Swiper-Slider</h1>
             <Swiper
                 modules={[EffectFade, Pagination, Autoplay]}
                 loop={true}

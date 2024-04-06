@@ -1,5 +1,19 @@
 import { useState } from "react";
+import showeye from '../assets/images/png/show-eye.png'
+import Hiddeneye from '../assets/images/png/hidden-eye.png'
 const FormValidation = () => {
+
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [confirmPassword, setConfirmPassword] = useState('false');
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+    const toggleconfirmPasswordVisibility = () => {
+        setConfirmPassword(!confirmPassword);
+    };
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
         lastname: "",
@@ -14,8 +28,10 @@ const FormValidation = () => {
         password: "",
         confirmPassword: "",
     });
-    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+
     const handleChange = (e) => {
+        setPassword(e.target.value);
+        setConfirmPassword(e.target.value);
         const { name, value } = e.target;
         if (name === 'number' && !/^\d*$/.test(value)) {
             // If the input is not a digit, don't update the state
@@ -115,28 +131,46 @@ const FormValidation = () => {
                     <div className="md:flex items-center justify-between">
                         <div className="form-group w-full md:max-w-[330px]">
                             <label htmlFor="password">Password:</label>
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className={formErrors.password ? "error" : ""}
-                            />
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    id="password"
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={(e) => handleChange(e)} // Using handleChange inline
+
+                                />
+                                <div className="absolute right-[10px] top-[7px]" onClick={togglePasswordVisibility}>
+                                    {showPassword ? (
+                                        <img src={showeye} alt="showeye" className="max-w-[25px]" />
+                                    ) : (
+                                        <img src={Hiddeneye} alt="showeye" className="max-w-[25px]" />
+                                    )}
+                                </div>
+                            </div>
                             {formErrors.password && (
                                 <p className="error-message">{formErrors.password}</p>
                             )}
                         </div>
                         <div className="form-group w-full md:max-w-[330px]">
                             <label htmlFor="confirmPassword">Confirm Password:</label>
-                            <input
-                                type="password"
-                                id="confirmPassword"
-                                name="confirmPassword"
-                                value={formData.confirmPassword}
-                                onChange={handleChange}
-                                className={formErrors.confirmPassword ? "error" : ""}
-                            />
+                            <div className="relative">
+                                <input
+                                    type={confirmPassword ? 'text' : 'password'}
+                                    id="confirmPassword"
+                                    name="confirmPassword"
+                                    value={formData.confirmPassword}
+                                    onChange={(e) => handleChange(e)}
+                                    className={formErrors.confirmPassword ? "error" : ""}
+                                />
+                                <div className="absolute right-[10px] top-[7px]" onClick={toggleconfirmPasswordVisibility}>
+                                    {confirmPassword ? (
+                                        <img src={showeye} alt="showeye" className="max-w-[25px]" />
+                                    ) : (
+                                        <img src={Hiddeneye} alt="showeye" className="max-w-[25px]" />
+                                    )}
+                                </div>
+                            </div>
                             {formErrors.confirmPassword && (
                                 <p className="error-message">{formErrors.confirmPassword}</p>
                             )}
@@ -144,7 +178,7 @@ const FormValidation = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="number">Number:</label>
-                        <input 
+                        <input
                             type="text"
                             id="number"
                             name="number"
