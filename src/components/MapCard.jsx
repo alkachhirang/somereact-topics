@@ -28,7 +28,10 @@ const MapCard = () => {
     return (
         <div>
             <div className='container mx-auto py-[50px]'>
-                <h2 className='text-black text-lg font-bold mb-[40px] text-center'>Map Cards by React</h2>
+                <div className='flex justify-center items-center'>
+                    <h2 className='text-center text-semibold mb-[20px] max-w-[230px] p-[15px]  '>Month:-April</h2>
+                </div>
+                <h3 className='text-black text-lg font-bold mb-[40px] text-center'>Map Cards by React</h3>
                 <div className='flex-row flex-wrap flex gap-3 justify-center'>
                     {data.map((a, index) => (
                         <div key={index} className={`${a.width} flex`} >
