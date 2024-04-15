@@ -142,9 +142,9 @@ const FormValidation = () => {
                                 />
                                 <div className="absolute right-[10px] top-[7px]" onClick={togglePasswordVisibility}>
                                     {showPassword ? (
-                                        <img src={showeye} alt="showeye" className="max-w-[25px]" />
+                                        <img src={showeye} alt="showeye" className="max-w-[25px] cursor-pointer" />
                                     ) : (
-                                        <img src={Hiddeneye} alt="showeye" className="max-w-[25px]" />
+                                            <img src={Hiddeneye} alt="Hiddeneye" className="max-w-[25px] cursor-pointer" />
                                     )}
                                 </div>
                             </div>
@@ -165,9 +165,9 @@ const FormValidation = () => {
                                 />
                                 <div className="absolute right-[10px] top-[7px]" onClick={toggleconfirmPasswordVisibility}>
                                     {confirmPassword ? (
-                                        <img src={showeye} alt="showeye" className="max-w-[25px]" />
+                                        <img src={showeye} alt="showeye" className="max-w-[25px] cursor-pointer" />
                                     ) : (
-                                        <img src={Hiddeneye} alt="showeye" className="max-w-[25px]" />
+                                        <img src={Hiddeneye} alt="hiddeneye" className="max-w-[25px] cursor-pointer" />
                                     )}
                                 </div>
                             </div>

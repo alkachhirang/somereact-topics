@@ -32,7 +32,7 @@ const MapNav = () => {
 
     return (
         <div>
-            <div className='container px-3'>
+            <div className='container px-3 pt-5'>
                 <h2 className='text-lg text-black text-center mb-[40px]'>Navbar by Map</h2>
                 <div className='flex justify-between py-[20px]'>
                     <a href=''>

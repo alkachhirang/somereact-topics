@@ -9,6 +9,7 @@ import SwiperSlider from './components/SwiperSlider';
 import FormValidation from './components/FormValidation';
 import MapCard from './components/MapCard';
 import MapNav from './components/MapNav';
+import Form from './components/Form';
 function App() {
   return (
     <div className="">
@@ -18,7 +19,7 @@ function App() {
       <FormValidation />
       <MapCard />
       <MapNav />
-
+      <Form/>
     </div>
   );
 }
